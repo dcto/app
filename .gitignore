@@ -5,4 +5,5 @@
 .DS_Store
 !.gitignore
 composer.lock
-vendor
+/vendor
+/varimax
