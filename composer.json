@@ -1,0 +1,49 @@
+{
+    "name": "varimax/app",
+    "type": "application",
+    "keywords": [
+        "php",
+        "varimax",
+        "framework"
+    ],
+    "description": "The varimax application",
+    "license": "Apache-2.0",
+    "require": {
+        "ext-bcmath": "*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "varimax/varimax": "dev-master"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.22"
+    },
+    "suggest": {
+        "ext-json": "Required to use JSON.",
+        "ext-pdo": "Required to use MySQL Client.",
+        "ext-pdo_mysql": "Required to use MySQL Client.",
+        "ext-openssl": "Required to use HTTPS.",
+        "ext-redis": "Required to use Redis Client.",
+        "miladrahimi/php-jwt": "PHP implementation of JWT"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-create-project-cmd":[
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@sed -i \"\" 's/{$KEY}/'${PWD##*/}'/g' config/config.php",
+            "@sed -i \"\" 's/{$REVISION}/'$(date '+%Y%m%d')'/g' config/config.php",
+            "@ln -s ./vendor/bin/varimax"
+        ],
+        "dev": ["php -r \"putenv('ENV=dev')\" -S localhost:8000 -t www/"],
+        "varimax": "varimax",
+        "test": "phpunit --prepend varimax.php -c phpunit.xml --colors=always",
+        "check": "php-cs-fixer fix $1",
+        "clean": "rm -rf runtime/*",
+        "start": ["Composer\\Config::disableProcessTimeout","php -S localhost:8000 -t www/"]
+    }
+}
