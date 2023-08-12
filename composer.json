@@ -26,7 +26,7 @@
         "ext-redis": "Required to use Redis Client.",
         "miladrahimi/php-jwt": "PHP implementation of JWT"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "optimize-autoloader": true,
