@@ -13,8 +13,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "varimax/varimax": "dev-master",
-        "vlucas/phpdotenv":"4.*"
+        "varimax/varimax": "dev-master"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.22"
@@ -36,6 +35,7 @@
     "scripts": {
         "post-create-project-cmd":[
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "php -r \"file_exists('config/dev.php') || copy('config/config.php', 'config/dev.php');\"",
             "sed -i \"\" 's/{$KEY}/'${PWD##*/}'/g' config/config.php",
             "sed -i \"\" 's/{$REVISION}/'$(date '+%Y%m%d')'/g' config/config.php"
         ],
