@@ -7,8 +7,8 @@
 <li><strong>IRC</strong>: #varimax/app on freenode
 
 ___
- <a href="https://packagist.org/packages/varimax/app"><img src="https://img.shields.io/packagist/l/varimax/app" alt="License"></a> <img src="https://img.shields.io/packagist/php-v/varimax/app" alt="PHP version"> <a href="https://packagist.org/packages/varimax/app"><img src="https://img.shields.io/github/v/release/dcto/app" alt="Latest Stable Version"></a>  <a href="https://packagist.org/packages/varimax/app"><img src="https://img.shields.io/packagist/dt/varimax/app" alt="Total Downloads"></a>
 
+ <a href="https://packagist.org/packages/varimax/app"><img src="https://img.shields.io/packagist/l/varimax/app" alt="License"></a> <img src="https://img.shields.io/packagist/php-v/varimax/app" alt="PHP version"> <a href="https://packagist.org/packages/varimax/app"><img src="https://img.shields.io/github/v/release/dcto/app" alt="Latest Stable Version"></a>  <a href="https://packagist.org/packages/varimax/app"><img src="https://img.shields.io/packagist/dt/varimax/app" alt="Total Downloads"></a>
 
 ### Get started Install
 
@@ -35,7 +35,6 @@ select 1 will be output error message without code error detail
 
 select 2 will be output detail code exception message to the client
 
-
 ### Router
 
 the varimax define some default route rule
@@ -52,6 +51,7 @@ the varimax define some default route rule
 ```
 
 #### Restful APIs Style
+
 ```
 Method     |  Path                |  Action   |
 ------------------------------------------------
@@ -60,9 +60,10 @@ GET        |  /test/(:id)         |  select   |
 POST       |  /test/create        |  create   |
 PUT/PATCH  |  /test/update/(:id)  |  update   |
 DELETE     |  /test/delete/(:id)  |  delete   |
-```    
+```
 
-#### Router demo
+#### Routes
+
 ```
 //公共组
 Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () {    
@@ -86,7 +87,28 @@ Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controlle
 } ); 
 ```
 
+#### The Varimax Command
+
+> `composer vmc` Get full vmc command to destnation
+> 
+> `composer dev`  start web server for develop  [http://127.0.0.1:8000](http://127.0.0.1:8000)
+> 
+> `composer test` phpunit test review code
+> 
+> `compsoer check` php-cs-fixer fix to valid code
+> 
+> `composer start` start web server for develop 
+> 
+> 
+
+
+
+
+
+---
+
+
 
 #### About Deverloper
 
->Name : D.C (陶之11)
+> Name : D.C (陶之11)
