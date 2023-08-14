@@ -35,9 +35,9 @@
     "scripts": {
         "post-create-project-cmd":[
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "php -r \"file_exists('config/dev.php') || copy('config/config.php', 'config/dev.php');\"",
             "sed -i \"\" 's/{$KEY}/'${PWD##*/}'/g' config/config.php",
-            "sed -i \"\" 's/{$REVISION}/'$(date '+%Y%m%d')'/g' config/config.php"
+            "sed -i \"\" 's/{$REVISION}/'$(date '+%Y%m%d')'/g' config/config.php",
+            "php -r \"file_exists('config/dev.php') || copy('config/config.php', 'config/dev.php');\""
         ],
         "vmc": "varimax",
         "dev": ["php -r \"putenv('ENV=dev');\"", "@start"],
