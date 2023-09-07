@@ -26,7 +26,6 @@
 ##########################################
 'database'=>[
     'default'=>'mysql',
-    'timeout'=>200,
     'connections'=>[
         //MYSQL类型
         'mysql'=>[
@@ -130,6 +129,6 @@
 #服务提供者
 ##########################################
 'providers' => [
-    \Illuminate\Events\EventServiceProvider::class
-]
+
+    ]
 ];
