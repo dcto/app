@@ -10,3 +10,4 @@ namespace App\Controller;
 abstract class Controller extends \VM\Controller
 {
 }
+
