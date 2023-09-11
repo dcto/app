@@ -5,19 +5,19 @@ namespace App\Exception;
 /**
 * @package App Exception
 */
-class UserException extends \VM\Exception\Exception
+class ErrorException extends \VM\Exception\Exception
 {
     /**
      * HTTP STATUS
      *
      * @var int
      */
-    protected $status = 600;
+    protected $status = 500;
 
     /**
      * HTTP Exception Message
      * @var string
      */
-    protected $message = 'User Exception';
+    protected $message = 'Not Found!';
 
 }
