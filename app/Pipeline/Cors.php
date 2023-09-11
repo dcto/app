@@ -2,7 +2,7 @@
 
 namespace App\Pipeline;
 
-class CorsPipeline extends \VM\Pipeline {
+class Cors extends \VM\Pipeline {
 
 
     public function handle(\VM\Http\Request $request, \Closure $next, ...$guards)

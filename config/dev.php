@@ -129,8 +129,7 @@
 #管道中间件
 ##########################################
 'pipeline'=>[
-    \App\Pipeline\AuthPipeline::class,
-    \App\Pipeline\CorsPipeline::class,
+    \App\Pipeline\Cors::class
 ],
 
 ##########################################
