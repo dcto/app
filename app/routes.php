@@ -1,8 +1,7 @@
 <?php
 //公共组
 Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () {  
-    // Router::any( '/', fn() =>"<pre>".print_r($_ENV, true)."</pre>");
-
+    Router::any( '/', fn()=>response()->make("<pre>".print_r($_ENV, true)."</pre>"));
     Router::any( '/test' )->call( 'Test@index' );
     Router::any( '/file' )->call( 'Test@files' );
     Router::any( '/test/(list:*)/(id:\d+)' )->call( 'Test@test' );

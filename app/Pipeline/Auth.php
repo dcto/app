@@ -10,7 +10,7 @@ class Auth extends \VM\Pipeline {
 
     public function handle(\VM\Http\Request $request, \Closure $next, ...$guards)
     {
-        if ($authorization = $request->bearer('Authorization')){
+        if ($authorization = $request->header('Authorization')){
             if($authorization == 'abcd123'){
                 return $next($request);
             }
