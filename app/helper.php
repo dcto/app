@@ -21,3 +21,18 @@ function response($response = null, $code = 0, $message = null, $callback = null
         )
     );
 }
+
+/**
+ * 视图响应
+ * @param string $layout
+ * @param array $data
+ * @param int $status
+ * @param array $headers
+ * @return \VM\Http\Response
+ */
+if(!function_exists('template')) {
+    function template($layout, $data = [], $status = 200, array $headers = [])
+    {
+        return make('response')->html(make('view')->render($layout, $data), $status, $headers);
+    }
+}
