@@ -3,7 +3,7 @@
  * 全局响应
  * @param string|array $response 响应内容 
  * @param int $code 错误码
- * @return \VM\Http\Response\Base|\VM\Http\Response\Json
+ * @return \VM\Http\Response
  */
 function response($response = null, $code = 0, $message = null, $callback = null)
 {
