@@ -33,6 +33,18 @@ function response($response = null, $code = 0, $message = null, $callback = null
 if(!function_exists('template')) {
     function template($layout, $data = [], $status = 200, array $headers = [])
     {
-        return make('response')->html(make('view')->render($layout, $data), $status, $headers);
+        return make('response')->html(
+            app('view')->make('php')
+            ->render($layout, $data)
+        , $status, $headers);
+    }
+}
+
+/**
+ * alias name for template
+ */
+if(!function_exists('view')){
+    function view($layout, $data = [], $status = 200, array $headers = []){
+        return template($layout, $data, $status, $headers);
     }
 }
