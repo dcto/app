@@ -49,7 +49,7 @@
             'driver'    => 'sqlite',
             'prefix'    => 'vm_',
             'passowrd'  => '',
-            'database'  => runtime('varimax')
+            'database'  => null
         ],
 
     ]
