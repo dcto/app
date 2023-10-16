@@ -43,7 +43,7 @@
         "adm": "@vmc -aadm",
         "api": "@vmc -aapi",
         "vmc": "varimax.php",
-        "dev": ["Composer\\Config::disableProcessTimeout","ENV=dev DEBUG=2 php -d variables_order=EGPCS -S localhost:8000 -t www"],
+        "dev": ["Composer\\Config::disableProcessTimeout","ENV=dev DEBUG=2 php -d variables_order=EGPCS -S localhost:666 -t www"],
         "test": ["phpunit --prepend varimax.php -c phpunit.xml --colors=always"],
         "check": ["php-cs-fixer fix $1"],
         "clean": ["rm -rf runtime/*"],
