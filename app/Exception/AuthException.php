@@ -5,7 +5,7 @@ namespace App\Exception;
 /**
 * @package App Exception
 */
-class AuthException extends \VM\Exception\Exception
+class AuthException extends \VM\Exception\Error
 {
     /**
      * HTTP STATUS

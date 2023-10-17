@@ -5,7 +5,7 @@ namespace App\Exception;
 /**
 * @package App Exception
 */
-class ErrorException extends \VM\Exception\Exception
+class ErrorException extends \VM\Exception\Error
 {
     /**
      * HTTP STATUS
