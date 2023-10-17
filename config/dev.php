@@ -99,8 +99,11 @@
     'encrypt'=>false,               //是否加密
     'save_path'=>runtime('session'), //存储路径
     // 'save_path'=> 'tcp://127.0.0.1:6379?persistent=5&timeout=5&database=1&auth=',
-    //其他配置
-    //the options configure @see http://php.net/session.configuration
+
+    /**
+     * session options configure
+     * @link http://php.net/session.configuration
+     */
     'options'=>[
         'name'=>'VMID',             //SESSION NAME 
         'gc_maxlifetime' => 86400,  //持续时间秒
