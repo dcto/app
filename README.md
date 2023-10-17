@@ -91,7 +91,7 @@ Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controlle
 
 > `composer vmc` Get full vmc command to destnation
 > 
-> `composer dev`  start web server for develop  [http://127.0.0.1:8000](http://127.0.0.1:8000)
+> `composer dev`  start built server for develop  [http://127.0.0.1:666](http://127.0.0.1:666)
 > 
 > `composer test` phpunit test review code
 > 
