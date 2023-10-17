@@ -93,7 +93,8 @@
 #session设置
 ##########################################
 'session'=>[
-    'start'=>true,                  //自动开启true|false
+    'start'=>true,                 //自动开启true|false
+    'driver'=>'files',             //驱动 files|redis|sqlite|memcached
     'prefix'=>'VM:',               //前缀标识
     'encrypt'=>false,               //是否加密
     'save_path'=>runtime('session'), //存储路径
