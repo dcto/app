@@ -92,26 +92,22 @@
 ##########################################
 #session设置
 ##########################################
+/**
+ * session config
+ * @see http://php.net/session.configuration
+ */
 'session'=>[
-    'start'=>true,                 //自动开启true|false
-    'driver'=>'files',             //驱动 files|redis|sqlite|memcached
-    'prefix'=>'VM:',               //前缀标识
-    'encrypt'=>false,               //是否加密
+    'name'=>'VMID',              //SESSION NAME 
+    'auto_start'=>true,          //自动开始
     'save_path'=>runtime('session'), //存储路径
     // 'save_path'=> 'tcp://127.0.0.1:6379?persistent=5&timeout=5&database=1&auth=',
-
-    /**
-     * session options configure
-     * @link http://php.net/session.configuration
-     */
-    'options'=>[
-        'name'=>'VMID',             //SESSION NAME 
-        'gc_maxlifetime' => 86400,  //持续时间秒
-        'cookie_domain' => '',
-        'use_cookies' => 0,
-        'gc_probability'=>1,
-        'gc_divisor'=>1,
-    ]
+    'gc_maxlifetime' => 86400,  //持续时间秒
+    'cookie_domain' => '',      //cookie 域
+    'use_cookies' => 1,         //使用cookie存储sess_id
+    'use_only_cookies' => 0,    //仅使用cookie存储sess_id
+    'use_trans_sid'=> 1,        //使用URL传递sess_id
+    'gc_probability'=>1,
+    'gc_divisor'=>1,
 ],
 
 ##########################################
