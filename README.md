@@ -87,25 +87,42 @@ Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controlle
 } ); 
 ```
 
-#### The Varimax Command
+#### Varimax Command
+Get vmc command destnation
+> `composer vmc` 
 
-> `composer vmc` Get full vmc command to destnation
-> 
-> `composer dev`  start built server for develop  [http://127.0.0.1:8000](http://127.0.0.1:8000)
-> 
-> `composer test` phpunit test review code
-> 
-> `compsoer check` php-cs-fixer fix to valid code
-> 
-> `composer start` start web server for develop 
-> 
-> 
+start built server for develop [http://127.0.0.1:8000](http://127.0.0.1:8000)
+> `composer dev`   
+
+ Phpunit test review code
+> `composer test`
+
+php-cs-fixer fix to valid code
+> `compsoer check` 
+
+start web server for develop
+> `composer start`  
 
 
 
+#### App Command
 
+Make new controller
+> `composer app make:controller controllerName`
 
+Make new model
+> `composer app make:model modelName` 
+
+Make new pipeline
+> `composer app make:pipeline pipelineName`
+
+Make new service
+> `composer app make:service serviceName`
 ---
+### Model Command
+
+Create database table from model schema method
+>`composer vmc model:schema modelName`
 
 
 
