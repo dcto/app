@@ -18,6 +18,6 @@ class ErrorException extends \VM\Exception\Error
      * HTTP Exception Message
      * @var string
      */
-    protected $message = 'Not Found!';
+    protected $message = 'Error!';
 
 }

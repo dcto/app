@@ -1,10 +1,7 @@
 <?php
 /**
-* The global DML Action
-* @package app
-* @author  dc.To
-* @version 20230724
-* @copyright ©2023 dc team all rights reserved.
+* DML Traits Action For Controller CRUD
+* @package Trait
 */
 namespace App\Traits;
 
@@ -14,32 +11,30 @@ trait DMLTrait {
     /**
     * Common create
     * @param  void 
-    * @return void 
-    * @author  dc.To
-    * @version 20230724
+    * @return string 
     */
     public function create()
     {
-        if($this->model::create($this->input(__METHOD__))){
-            return $this->response(lang('e.create.ok', $this->lang));
-        }else{
-            return $this->response(lang('e.crate.no', $this->lang), $this->code + 1 );
+        try{
+            Model::create(input());
+            return lang('e.create.ok');
+        }catch(\Exception $e){
+            throw new \App\Exception\ErrorException(lang('e.create.no') . '`'.$e->getMessage().'`');
         }
     }
 
     /**
     * Common update
     * @param  void 
-    * @return void 
-    * @author  dc.To
-    * @version 20230724
+    * @return string
     */
     public function update()
     {
-        if($this->model::where($this->where(__METHOD__))->update($this->input(__METHOD__))){
-            return $this->response(lang('e.update.ok', $this->lang));
-        }else{
-            return $this->response(lang('e.update.no', $this->lang), $this->code + 2);
+        try{
+            Model::where('id', input('id'))->update($this->input());
+            return lang('e.update.ok');
+        }catch(\Exception $e){
+            throw new \App\Exception\ErrorException(lang('e.update.no') . '`'.$e->getMessage().'`');
         }
     }
 
@@ -47,17 +42,15 @@ trait DMLTrait {
     /**
     * Common delete
     * @param  void 
-    
     * @return void 
-    * @author  dc.To
-    * @version 20230724
     */
     public function delete()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
     {
-        if($this->model::where($this->where(__METHOD__))->delete()){
-            return $this->response(lang('e.delete.ok', $this->lang));
-        }else{
-            return $this->response(lang('e.delete.no', $this->lang), $this->code + 3 );
+        try{
+            Model::where('id', input('id'))->delete();
+            return lang('e.delete.ok');
+        }catch(\Exception $e){
+            throw new \App\Exception\ErrorException(lang('e.delete.no') . '`'.$e->getMessage().'`');
         }
     }
 }
