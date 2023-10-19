@@ -101,7 +101,7 @@
     'auto_start'=>true,          //自动开始
     'save_handler'=>'files',     //存储引擎files,redis
     'save_path'=>runtime('session'), //存储路径
-    // 'save_path'=> 'tcp://127.0.0.1:637', //?prefix=&persistent=5&timeout=5&database=0&auth=
+    // 'save_path'=> 'tcp://127.0.0.1:6379', //?prefix=&persistent=5&timeout=5&database=0&auth=
     'gc_maxlifetime' => 86400,  //持续时间秒
     'cookie_domain' => '',      //cookie 域
     'use_cookies' => 1,         //使用cookie存储sess_id
