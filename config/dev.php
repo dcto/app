@@ -116,7 +116,7 @@
 'cookie'=>[
     'path'=>'/',        //路径
     'prefix'=>'vm_',    //前缀
-    'domain'=>'.',      //作用域
+    'domain'=>null,      //作用域
     'expire'=>86400,    //过期时间
     'secure'=>true,     //SSL协议
     'raw' => false,     //cookie编码
