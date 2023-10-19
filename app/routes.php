@@ -2,8 +2,10 @@
 //公共组
 Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () {  
     Router::any( '/', fn()=>response()->make("<pre>".print_r($_ENV, true)."</pre>"));
-    Router::any( '/test' )->call( 'Test@index' );
-    Router::any( '/file' )->call( 'Test@files' );
+    Router::any( '/test')->call( 'Test@index');
+    Router::any( '/session')->call('Session@index');
+    Router::any( '/cookie')->call('Cookie@index');
+    Router::any( '/file' )->call( 'Test@files');
     Router::any( '/test/(list:*)/(id:\d+)' )->call( 'Test@test' );
     Router::get( '/test/(shop:vip|user)' )->call( 'Test@shop' ); //only allow vip or user string
     Router::get( '/test/(shop:vip|user)/(id:|\d+)' )->call( 'Test@shop' );
