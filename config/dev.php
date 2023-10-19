@@ -129,7 +129,7 @@
 #管道中间件
 ##########################################
 'pipeline'=>[
-    \App\Pipeline\Cors::class
+    \App\Pipeline\App::class //The App Global Pipeline
 ],
 
 ##########################################

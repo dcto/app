@@ -2,10 +2,13 @@
 
 namespace App\Pipeline;
 
+/**
+ * Domain Cross-Origin Resource Sharing Pipeline
+ * @package Pipeline
+ */
 class Cors extends \VM\Pipeline {
-
     /**
-     * Cors domain request
+     * Cors domain request handle
      */
     public function handle(\VM\Http\Request $request, \Closure $next, ...$guards)
     {
@@ -20,6 +23,4 @@ class Cors extends \VM\Pipeline {
         }
         return $next($request);
     }
-    
-
 }   

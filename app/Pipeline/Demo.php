@@ -3,10 +3,10 @@
 namespace App\Pipeline;
 
 /**
+ * Demo Pipeline
  * @package Pipeline
  */
 class Demo extends \VM\Pipeline {
-
 
     public function handle(\VM\Http\Request $request, \Closure $next, ...$guards)
     {
