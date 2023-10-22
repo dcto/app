@@ -2,13 +2,17 @@
 
 /**
  * 视图响应
- * @param string $layout
+ * @param string $template
  * @param array|object $dataset
+ * @
  * @return \VM\Http\Response
  */
-function view($layout, ...$dataset)
+function view($template, ...$dataset)
 {
-    return make('response')->html(app('view')->make('php')->render($layout, ...$dataset));
+    if(!app()->has('view')){
+        throw new \App\Exception\ErrorException('Please using `composer install varimax/view` @link https://packagist.org/packages/varimax/view ');
+    }
+    return make('response')->html(app('view')->render($template, ...$dataset));
 }
 
 /**
