@@ -2,7 +2,8 @@
 //公共组
 Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () {  
     Router::any( '/', fn()=>response()->make("<pre>".print_r($_ENV, true)."</pre>"));
-    Router::any( '/test')->call( 'Test@index');
+    Router::any( '/test')->call('Test@index');
+    Router::any( '/lang')->call('Lang@index');
     Router::any( '/session')->call('Session@index');
     Router::any( '/cookie')->call('Cookie@index');
     Router::any( '/file' )->call( 'Test@files');
