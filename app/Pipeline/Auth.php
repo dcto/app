@@ -15,8 +15,8 @@ class Auth extends \VM\Pipeline {
      */
     public function handle($request, \Closure $next, ...$guards)
     {
-        if ($authorization = $request->header('Authorization')){
-            if($authorization == 'abcd123'){
+        if ($authorization = $request->bearer('Authorization')){
+            if($authorization == 'TestToken'){
                 return $next($request);
             }
         }
