@@ -7,10 +7,13 @@ namespace App\Pipeline;
  * @package Pipeline
  */
 class Auth extends \VM\Pipeline {
+    
     /**
-     * Request Authentication Hanlder
+     * @param \VM\Http\Request $request
+     * @param \Closure $next
+     * @param array $guards
      */
-    public function handle(\VM\Http\Request $request, \Closure $next, ...$guards)
+    public function handle($request, \Closure $next, ...$guards)
     {
         if ($authorization = $request->header('Authorization')){
             if($authorization == 'abcd123'){

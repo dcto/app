@@ -7,20 +7,23 @@ namespace App\Pipeline;
  * @package Pipeline
  */
 class Cors extends \VM\Pipeline {
+
     /**
-     * Cors domain request handle
+     * @param \VM\Http\Request $request
+     * @param \Closure $next
+     * @param array $guards
      */
-    public function handle(\VM\Http\Request $request, \Closure $next, ...$guards)
+    public function handle($request, \Closure $next, ...$guards)
     {
-        if ($request->method('OPTIONS')) {
-            return $next(make('response')->make()->withHeaders([
+        // if ($request->method('OPTIONS')) {
+            return $next( response()->headers([
                 'Access-Control-Max-Age'=>'600',
-                'Access-Control-Allow-Origin'=>$request->header('origin'),
+                'Access-Control-Allow-Origin'=>'*',
                 'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers'=>'Accept, Application, Authorization, Content-Type, Origin, X-Requested-With',
                 'Access-Control-Allow-Credentials'=>'true'
             ]));
-        }
-        return $next($request);
+        // }
+        // return $next($request);
     }
 }   

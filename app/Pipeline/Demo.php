@@ -8,15 +8,20 @@ namespace App\Pipeline;
  */
 class Demo extends \VM\Pipeline {
 
-    public function handle(\VM\Http\Request $request, \Closure $next, ...$guards)
+    /**
+     * @param \VM\Http\Request $request
+     * @param \Closure $next
+     * @param array $guards
+     */
+    public function handle( $request, \Closure $next, ...$guards)
     {
+        return $next($request);
         /**
          * Pipeline the request
          */
         // $request->set('var', 'val');
         // $response = $next($request);
         // print_r($response);    
-        return $next($request);
 
         /**
          * Pipeline the response

@@ -23,7 +23,7 @@ Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controlle
 } );
 
 //验证组
-Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controller', 'pipeline' => \App\Pipeline\Auth::class], function () {
+Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controller', 'pipeline' => [\App\Pipeline\Auth::class,\App\Pipeline\Cors::class]], function () {
 
     Router::get('/user')->call('User@index');
 } ); 
