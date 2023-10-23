@@ -3,11 +3,9 @@
 namespace App\Controller;
 
 /**
- * Class controller
- * 公共继承控制器
+ * Abstract Class controller
+ * 公共控制器
  * @package App\Controller
  */
-abstract class Controller extends \VM\Controller
-{
-}
+abstract class Controller extends \VM\Controller {}
 
