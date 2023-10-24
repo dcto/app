@@ -15,11 +15,16 @@ class Auth extends \VM\Pipeline {
      */
     public function handle($request, \Closure $next, ...$guards)
     {
+        /**
+         * @var \Response $response
+         */
+        $response = $next($request);
         if ($authorization = $request->bearer('Authorization')){
             if($authorization == 'TestToken'){
-                return $next($request);
+                return $response;
             }
         }
-        return $next(response()->json(['code'=>401,'message' => 'Unauthorized'], 401));
+        $response->json(['code'=>401,'message' => 'Unauthorized'], 401);
+        return $response;
     }
 }   

@@ -20,14 +20,13 @@ class Demo extends \VM\Pipeline {
          * Pipeline the request
          */
         // $request->set('var', 'val');
-        // $response = $next($request);
-        // print_r($response);    
+        // $response = $next($request); 
 
         /**
          * Pipeline the response
          */
         //$response = $next($request);
-        //return $next(make('response')->make('demo'));
+        //return $response;
     }
     
 
