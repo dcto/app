@@ -6,7 +6,7 @@ namespace App\Pipeline;
  * App Authentication Pipeline
  * @package Pipeline
  */
-class Auth extends \VM\Pipeline {
+class Auth {
     
     /**
      * @param \VM\Http\Request $request
@@ -18,13 +18,11 @@ class Auth extends \VM\Pipeline {
         /**
          * @var \Response $response
          */
-        $response = $next($request);
         if ($authorization = $request->bearer('Authorization')){
             if($authorization == 'TestToken'){
-                return $response;
+                return $next($request);
             }
         }
-        $response->json(['code'=>401,'message' => 'Unauthorized'], 401);
-        return $response;
+        return response()->json(['code'=>401,'message' => 'Unauthorized'], 401);
     }
 }   

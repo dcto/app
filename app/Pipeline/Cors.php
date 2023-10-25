@@ -6,7 +6,7 @@ namespace App\Pipeline;
  * Domain Cross-Origin Resource Sharing Pipeline
  * @package Pipeline
  */
-class Cors extends \VM\Pipeline {
+class Cors {
 
     /**
      * @param \VM\Http\Request $request
@@ -16,7 +16,7 @@ class Cors extends \VM\Pipeline {
     public function handle($request, \Closure $next, ...$guards)
     {
         if ($request->method('OPTIONS')) {
-            return $next($request)->headers([
+            return response('', 200, [
                 'Access-Control-Max-Age'=>'600',
                 'Access-Control-Allow-Origin'=>'*',
                 'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE, OPTIONS',

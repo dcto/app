@@ -6,7 +6,7 @@ namespace App\Pipeline;
  * Demo Pipeline
  * @package Pipeline
  */
-class Demo extends \VM\Pipeline {
+class Demo {
 
     /**
      * @param \VM\Http\Request $request
@@ -15,18 +15,33 @@ class Demo extends \VM\Pipeline {
      */
     public function handle( $request, \Closure $next, ...$guards)
     {
-        return $next($request);
         /**
-         * Pipeline the request
+         * @todo handle request
+         * $request->set('key', 'value');
+         * return $next($request); 
          */
-        // $request->set('var', 'val');
-        // $response = $next($request); 
 
         /**
-         * Pipeline the response
+         * @todo handle response
+         * $response = $next($request);
+         * $response->header('key', 'value');
+         * return $response;
          */
-        //$response = $next($request);
-        //return $response;
+
+        /**
+        * @todo handle exception
+        * try{
+        *    $response = $next($request);
+        * }catch(\Exception $e){
+        *    $response = response()->json(['error' => 'Internal Server Error'], 500);
+        *    return $response;
+        * }
+        */
+
+        /**
+         * @todo final pipeline
+         * if($request->get('token') !== 'secret') return response('Unauthorized');
+         */
     }
     
 

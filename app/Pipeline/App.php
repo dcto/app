@@ -6,7 +6,7 @@ namespace App\Pipeline;
  * The App Global Pipeline
  * @package Pipeline
  */
-class App extends \VM\Pipeline {
+class App {
 
     /**
      * @param \VM\Http\Request $request
