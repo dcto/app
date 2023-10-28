@@ -1,7 +1,7 @@
 <?php
 //公共组
 Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () {  
-    Router::any('/', response('index'));
+    Router::any('/', fn()=>'Hello World');
     Router::any('/test')->call('Test@index');
     Router::any('/lang')->call('Lang@index');
     Router::any('/session')->call('Session@index');

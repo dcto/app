@@ -15,6 +15,14 @@ class App {
      */
     public function handle($request, \Closure $next, ...$guards)
     {
-        return $next($request);
+        $handle = $next($request);
+        if(!$handle instanceof \VM\Http\Response){
+            if(is_scalar($handle)){
+                $handle = response()->make($handle);
+            }else{
+                $handle = response()->json($handle);
+            }
+        }
+        return $handle;
     }
 }   
