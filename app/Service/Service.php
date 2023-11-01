@@ -7,17 +7,6 @@ namespace App\Service;
 */
 class Service extends \VM\Services\ServiceProvider 
 {
-
-    /**
-    * Boot service.
-    * @param  void 
-    * @return void 
-    */
-    public function boot()
-    {
-
-    }
-
     /**
     * Register service.
     * @param  void 
