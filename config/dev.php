@@ -1,9 +1,10 @@
 <?php return [
+
 'app'=>[
     //APP标识
     'key' => '{$KEY}',
     //日志等级 (0=关闭, 1=普通日志, 2=数据日志)
-    'log' => getenv('DEBUG'),
+    'log' => 2,
     //系统编码
     'charset'  => 'utf-8',
     //默认语言
@@ -14,13 +15,7 @@
     'version' => '{$REVISION}'
 ],
 
-##########################################
-#目录配置
-##########################################
-'dir'=>[
-    'app'     => _DIR_, //应用目录
-    'www'     => _WWW_, //发布目录
-],
+
 ##########################################
 #数据库连接, default代表默认连接库
 ##########################################
@@ -67,7 +62,7 @@
             ],
             //文件缓存
             'files' =>  [
-                'dir' => runtime('cache'),
+                'dir' => _RUNTIME_.'/cache',
                 'prefix'=>'vm_',
                 'append'=>'.bin'
             ],
@@ -100,7 +95,7 @@
     'name'=>'VMID',              //SESSION NAME 
     'auto_start'=>true,          //自动开始
     'save_handler'=>'files',     //存储引擎files,redis
-    'save_path'=>runtime('session'), //存储路径
+    'save_path'=> _RUNTIME_.'/session', //存储路径
     // 'save_path'=> 'tcp://127.0.0.1:6379', //?prefix=&persistent=5&timeout=5&database=0&auth=
     'gc_maxlifetime' => 86400,  //持续时间秒
     'cookie_domain' => '',      //cookie 域
@@ -130,13 +125,12 @@
 #管道中间件
 ##########################################
 'pipeline'=>[
-    \App\Pipeline\App::class //The App Global Pipeline
+    App\Pipeline\App::class //The App Global Pipeline
 ],
 
 ##########################################
 #服务提供者
 ##########################################
 'service' => [
-
     ]
 ];
