@@ -48,8 +48,3 @@ Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controlle
         Router::any('/delete')->call('User@delete');
     });
 } ); 
-
-
-
-print_r(app('router')->groups());die;
-
