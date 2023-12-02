@@ -16,7 +16,9 @@
         "varimax/varimax": "dev-master"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.22"
+        "friendsofphp/php-cs-fixer": "^3.22",
+        "twig/twig": "^3.8",
+        "varimax/view": "dev-main"
     },
     "suggest": {
         "ext-json": "Required to use JSON.",
