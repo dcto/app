@@ -38,8 +38,8 @@ Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controlle
     /**
      * 会员中心
      * name: 组名称
-     * prefix: 当以/开头表示重写前缀否则继承
-     * namespace: 当以\开头表示重写命名空间前缀否则继承
+     * prefix: 当以/开头表示覆盖前缀,否则继承
+     * namespace: 当以\开头表示覆盖命名空间前缀,否则继承
      */
     Router::group(['name'=>'user', 'prefix'=>'/user', 'namespace'=>'User', 'pipeline'=>'App\Pipeline\User'], function(){
         Router::get('/list')->call('User@index');
