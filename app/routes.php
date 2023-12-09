@@ -35,16 +35,28 @@ Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controlle
     //首页
     Router::get('/home')->call('Home@index');
     
-    /**
-     * 会员中心
-     * name: 组名称
-     * prefix: 当以/开头表示覆盖前缀,否则继承
-     * namespace: 当以\开头表示覆盖命名空间前缀,否则继承
-     */
-    Router::group(['name'=>'user', 'prefix'=>'/user', 'namespace'=>'User', 'pipeline'=>'App\Pipeline\User'], function(){
-        Router::get('/list')->call('User@index');
-        Router::any('/create')->call('User@create');
-        Router::any('/update')->call('User@update');
-        Router::any('/delete')->call('User@delete');
+    Router::group(['id'=>'menu'], function(){
+        /**
+         * 会员中心
+         * name: 组名称
+         * prefix: 当以/开头表示覆盖前缀,否则继承
+         * namespace: 当以\开头表示覆盖命名空间前缀,否则继承
+         */
+        Router::group(['id'=>'user', 'name'=>'user', 'prefix'=>'/user', 'namespace'=>'User', 'pipeline'=>'App\Pipeline\User'], function(){
+            Router::get('/list')->call('User@index');
+            Router::any('/create')->call('User@create');
+            Router::any('/update')->call('User@update');
+            Router::any('/delete')->call('User@delete');
+        });
+        
+        Router::group(['id'=>'admin', 'name'=>'管理员', 'prefix'=>'admin'], function(){
+            Router::get('/list')->call('Admin@index');
+
+            Router::group(['id'=>'admin.group', 'name'=>'管理员组', 'prefix'=>'group'], function(){
+                Router::get('/group')->call('Admin@index');
+            });
+        });
+
+
     });
-} ); 
+}); 
