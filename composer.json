@@ -49,6 +49,6 @@
         "test": ["phpunit --prepend varimax.php -c phpunit.xml --colors=always"],
         "check": ["php-cs-fixer fix $1"],
         "clean": ["rm -rf runtime/*"],
-        "start": ["Composer\\Config::disableProcessTimeout","php -S 127.0.0.1:8620 -t www"]
+        "start": "server.php"
     }
 }
