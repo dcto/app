@@ -50,6 +50,6 @@
         "test": ["phpunit --prepend varimax.php -c phpunit.xml --colors=always"],
         "check": ["php-cs-fixer fix $1"],
         "clean": ["rm -rf runtime/*"],
-        "start": "server.php"
+        "server": "server.php"
     }
 }
