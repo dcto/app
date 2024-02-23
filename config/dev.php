@@ -15,6 +15,29 @@
     'version' => '{$REVISION}'
 ],
 
+##########################################
+#服务器配置
+##########################################
+'server'=>[
+    'servers' => [
+        [
+            'name' => 'http',
+            'type' => 1, //1=http, 2=websocket, 3=base
+            'host' => '0.0.0.0',
+            'port' => 8620,
+            'sock_type'=>1,
+            'callbacks' => []
+        ],
+        // [
+        //     'name' => 'websocket',
+        //     'type' => 2, //1=http, 2=websocket, 3=base
+        //     'host' => '0.0.0.0',
+        //     'port' => 8644,
+        //     'sock_type'=>1,
+        //     'callbacks' => [],
+        // ],
+    ],
+],
 
 ##########################################
 #数据库连接, default代表默认连接库
@@ -121,16 +144,21 @@
     'sameSite'=>null,   //站点跨域none|lax|strict 保证secure=true时有效
 ],
 
+
+'crontab'=>[
+ 
+],
+
 ##########################################
 #管道中间件
 ##########################################
 'pipeline'=>[
-    App\Pipeline\App::class //The App Global Pipeline
+    App\Pipeline\App::class // App Global Pipeline
 ],
 
 ##########################################
 #服务提供者
 ##########################################
 'service' => [
-    ]
+]
 ];

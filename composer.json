@@ -9,7 +9,6 @@
     "description": "The varimax application",
     "license": "Apache-2.0",
     "require": {
-        "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
@@ -18,8 +17,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.22",
-        "twig/twig": "^3.8",
-        "varimax/view": "dev-main"
+        "swoole/ide-helper": "^5.1"
     },
     "suggest": {
         "ext-json": "Required to use JSON.",
@@ -27,7 +25,7 @@
         "ext-pdo_mysql": "Required to use MySQL Client.",
         "ext-openssl": "Required to use HTTPS.",
         "ext-redis": "Required to use Redis Client.",
-        "miladrahimi/php-jwt": "PHP implementation of JWT"
+        "ext-swoole": "Coroutine-based concurrency library for PHP."
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -49,6 +47,7 @@
         "dev": ["Composer\\Config::disableProcessTimeout","ENV=dev DEBUG=2 php -d variables_order=EGPCS -S 127.0.0.1:8620 -t www"],
         "test": ["phpunit --prepend varimax.php -c phpunit.xml --colors=always"],
         "check": ["php-cs-fixer fix $1"],
-        "clean": ["rm -rf runtime/*"]
+        "clean": ["rm -rf runtime/*"],
+        "server": ["Composer\\Config::disableProcessTimeout","server.php"]
     }
 }
