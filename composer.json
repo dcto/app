@@ -13,6 +13,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "varimax/server": "dev-main",
+        "varimax/crontab": "dev-main",
         "varimax/varimax": "dev-master"
     },
     "require-dev": {
