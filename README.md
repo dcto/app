@@ -116,8 +116,8 @@ start built server for develop [http://127.0.0.1:8620](http://127.0.0.1:8620)
 php-cs-fixer fix to valid code
 > `compsoer check` 
 
-start web server for develop
-> `composer start`  
+start web server for production
+> `composer server start`  
 
 
 
