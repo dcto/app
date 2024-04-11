@@ -31,8 +31,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "optimize-autoloader": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "process-timeout": 0,
+        "optimize-autoloader": true
     },
     "scripts": {
         "post-create-project-cmd":[
@@ -49,6 +50,6 @@
         "test": ["phpunit --prepend varimax.php -c phpunit.xml --colors=always"],
         "check": ["php-cs-fixer fix $1"],
         "clean": ["rm -rf runtime/*"],
-        "server": ["Composer\\Config::disableProcessTimeout","server.php"]
+        "start": ["Composer\\Config::disableProcessTimeout","server.php"]
     }
 }
