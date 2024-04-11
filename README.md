@@ -117,7 +117,7 @@ php-cs-fixer fix to valid code
 > `compsoer check` 
 
 start web server for production
-> `composer server start`  
+> `composer start [application = app]`  
 
 
 
