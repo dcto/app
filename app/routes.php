@@ -8,7 +8,7 @@ Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controlle
     Router::any('/cookie')->call('Cookie@index');
     Router::any('/file' )->call('Test@files');
     Router::any('/twig' )->call('Test@twig');
-    Router::any('/test/(list:*)/(id:\d+)' )->call('Test@test' );
+    Router::any('/test/(list:*)/(id:\d+)' )->id('test.list')->call('Test@test' );
     Router::get('/test/(shop:vip|user)' )->call('Test@shop' ); //only allow vip or user string
     Router::get('/test/(shop:vip|user)/(id:|\d+)' )->call('Test@shop' );
     //注册
