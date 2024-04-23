@@ -92,7 +92,7 @@
             //Redis缓存
             'redis' =>  [
                 'default'   =>  [
-                    'host'=> 'redis',
+                    'host'=> 'localhost',
                     'port'=>'6379',
                     'prefix'=>'vm:',
                     'timeout'=>'5',
