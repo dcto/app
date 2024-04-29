@@ -25,7 +25,7 @@ class Job {
     * '/5 * * * * *' // 每5秒执行一次
     * '/1 * * * * *' // 每秒执行一次
     */
-    public $schedule = '0 * * * * *'; // 每秒执行一次
+    public $schedule = '0 * * * * *';
 
     /**
      * 时区
@@ -47,6 +47,6 @@ class Job {
     */
     public function execute()
     {
-        echo "execute job at: ", date("Y-m-d H:i:s").PHP_EOL;
+        \Log::info('execute job at: '. date("Y-m-d H:i:s"));
     }
 }
