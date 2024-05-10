@@ -12,13 +12,13 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "varimax/server": "dev-main",
-        "varimax/crontab": "dev-main",
-        "varimax/varimax": "dev-master"
+        "varimax/server": "@dev",
+        "varimax/crontab": "@dev",
+        "varimax/varimax": "@dev"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.22",
-        "swoole/ide-helper": "^5.1"
+        "swoole/ide-helper": "@dev"
     },
     "suggest": {
         "ext-json": "Required to use JSON.",
