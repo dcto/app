@@ -35,7 +35,7 @@ class App {
      * @param array $data
      * @return \VM\Http\Response
      */
-    protected function response(int $code = 200, string $message = '', array $dataset = [])
+    protected function response(int $code = 200, string $message = '', $dataset = [])
     {
         return response()->json(['code'=>$code, 'message' => $message, 'dataset'=>$dataset], $code);
     }
