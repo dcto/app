@@ -24,8 +24,7 @@ class App {
             return $r;
         }catch(\Throwable $e){
             error_log($e, 4);
-            throw $e;
-            // return $this->response($e->getCode(), $e->getMessage(), []);
+            return \Response::make(\VM\Exception\E::html($e), 500);
         }
     }
 
