@@ -19,12 +19,13 @@ class App {
         try{
             $r = $next($request);
             if(!$r instanceof \VM\Http\Response){
-                $r = is_scalar($r) ? $this->response(200, $r) : $this->response(200, 'success', $r);
+                $r = is_scalar($r) ? \Response::make($r) : \Response::json($r);
             }
             return $r;
         }catch(\Throwable $e){
             error_log($e, 4);
-            return $this->response($e->getCode(), $e->getMessage(), []);
+            throw $e;
+            // return $this->response($e->getCode(), $e->getMessage(), []);
         }
     }
 

@@ -93,14 +93,14 @@
             'redis' =>  [
                 'default'   =>  [
                     'host'=> 'localhost',
-                    'port'=>'6379',
-                    'prefix'=>'vm:',
-                    'timeout'=>'5',
-                    'database'=>'0',
-                    'password' => '',
-                    'persistent'=>'0',
-                    'options'=>[]
-
+                    'port'=> 6379,
+                    'auth' => '',
+                    'timeout'=>3,
+                    'database'=>0,
+                    'persistent'=>false,
+                    'options'=>[
+                        \Redis::OPT_PREFIX=>'vm:',
+                    ]
                 ]
             ],
 
