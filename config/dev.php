@@ -19,24 +19,13 @@
 #服务器配置
 ##########################################
 'server'=>[
-    'servers' => [
-        [
-            'name' => 'http',
-            'type' => 1, //1=http, 2=websocket, 3=base
-            'host' => '0.0.0.0',
-            'port' => 8620,
-            'sock_type'=>1,
-            'callbacks' => []
-        ],
-        // [
-        //     'name' => 'websocket',
-        //     'type' => 2, //1=http, 2=websocket, 3=base
-        //     'host' => '0.0.0.0',
-        //     'port' => 8644,
-        //     'sock_type'=>1,
-        //     'callbacks' => [],
-        // ],
-    ],
+    [
+        'type' => 1, //1=http, 2=websocket, 3=base
+        'host' => '127.0.0.1',
+        'port' => 8620,
+        'setting' => [],
+        'callback' => []
+    ]
 ],
 
 ##########################################
@@ -53,7 +42,7 @@
             #write.host  =   192.168.1.100
             #read.host[]   =   192.168.1.101
             #read.host[]   =   192.168.1.102  
-            'host'      =>   'localhost',   //连接地址
+            'host'      =>   '127.0.0.1',   //连接地址
             'port'      =>   '3306',        //连接端口
             'database'  =>   'test',        //数据库名称
             'username'  =>   'root',        //连接帐号
