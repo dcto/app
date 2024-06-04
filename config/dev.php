@@ -37,26 +37,26 @@
         //MYSQL类型
         'mysql'=>[
             #数据库类型( MySQL = mysql | SQL Server = sqlsrv | SQLite = sqlite | pgSql = pgsql)
-            'driver'  =>  env('DB_DRIVER','mysql'),
+            'driver'  =>  env('MYSQL_DRIVER','mysql'),
             #读写分离
             #write.host  =   192.168.1.100
             #read.host[]   =   192.168.1.101
             #read.host[]   =   192.168.1.102  
-            'host'      =>   env('DB_HOST', '127.0.0.1'),   //连接地址
-            'port'      =>   env('DB_PORT', 3306),        //连接端口
-            'database'  =>   env('DB_DATABASE', 'test'),    //数据库名称
-            'username'  =>   env('DB_USERNAME', 'root'),        //连接帐号
-            'password'  =>   env('DB_PASSWORD', 'root'),        //连接密码
-            'prefix'    =>   env('DB_PREFIX', 'vm_'),         //所有表前缀
-            'charset'   =>   env('DB_CHARSET', 'utf8mb4'),     //字符集
-            'collation' =>   env('DB_COLLATION', 'utf8mb4_unicode_ci'), //排序规则
+            'host'      =>   env('MYSQL_HOST', '127.0.0.1'),   //连接地址
+            'port'      =>   env('MYSQL_PORT', 3306),        //连接端口
+            'database'  =>   env('MYSQL_DATABASE', 'test'),    //数据库名称
+            'username'  =>   env('MYSQL_USERNAME', 'root'),        //连接帐号
+            'password'  =>   env('MYSQL_PASSWORD', 'root'),        //连接密码
+            'prefix'    =>   env('MYSQL_PREFIX', 'vm_'),         //所有表前缀
+            'charset'   =>   env('MYSQL_CHARSET', 'utf8mb4'),     //字符集
+            'collation' =>   env('MYSQL_COLLATION', 'utf8mb4_unicode_ci'), //排序规则
         ],
 
         'sqlite'=>[
             'driver'    => 'sqlite',
-            'prefix'    => 'vm_',
-            'passowrd'  => '',
-            'database'  => null
+            'prefix'    => env('SQLITE_PREFIX', 'vm_'),
+            'passowrd'  => env('SQLITE_PASSWORD', null),
+            'database'  => env('SQLITE_DATABASE', _RUNTIME_.'/varimax.db'),
         ],
 
     ]
