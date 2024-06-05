@@ -19,12 +19,32 @@
 #服务器配置
 ##########################################
 'server'=>[
-    [
-        'type' => 1, //1=http, 2=websocket, 3=base
-        'host' => '127.0.0.1',
-        'port' => 8620,
-        'setting' => [],
-        'callback' => []
+    'type' => 2, //1=http, 2=websocket, 3=base
+    'host' => '127.0.0.1',
+    'port' => 8620,
+    'setting' => [
+        'worker_num' => env('WORKER_NUM', 1),
+        'pid_file'=>_RUNTIME_.'/varimax.pid',
+        // 'open_http_protocol'=>true, //开启HTTP协议
+        // 'open_websocket_protocol'=>true, //开启WebSocket协议
+    ],
+    'callback' => [
+        // 'start'=>null,
+
+        # HTTP Request Event
+        // 'request'=>null,
+
+        # WebSocket Event
+        // 'open'=>null,
+        // 'message'=>null,
+        // 'handshake'=>null,
+
+        # TCP/UDP Event
+        // 'connect'=>null,
+        // 'message'=>null,
+        // 'receive'=>null,
+        // 'packet'=>null,
+        // 'close'=>null
     ]
 ],
 
