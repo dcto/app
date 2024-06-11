@@ -19,9 +19,9 @@
 #服务器配置
 ##########################################
 'server'=>[
-    'type' => 2, //1=http, 2=websocket, 3=base
-    'host' => '127.0.0.1',
-    'port' => 8620,
+    'type' => env('SERVER_TYPE', 2), //1=http, 2=websocket, 3=base
+    'host' => env('SERVER_HOST', '127.0.0.1'),
+    'port' => env('SERVER_PORT', 8620),
     'setting' => [
         'worker_num' => env('WORKER_NUM', 1),
         'pid_file'=>_RUNTIME_.'/varimax.pid',
