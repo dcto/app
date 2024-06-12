@@ -1,6 +1,6 @@
-FROM php:7.4-fpm-alpine3.16
+FROM php:8.0-fpm-alpine3.16
 
-LABEL maintainer="Varimax Developers <sdoz@live.com>" version="2.0" license="MIT" app.name="varimax"
+LABEL maintainer="Varimax Developer" version="2.0" license="MIT" app.name="varimax"
 
 ARG timezone
 
@@ -37,13 +37,10 @@ WORKDIR /opt/www
 
 COPY . /opt/www
 
-# RUN composer config repo.packagist composer https://mirrors.aliyun.com/composer/
+RUN composer config repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # RUN composer install --no-dev -o
 RUN echo '#!/bin/bash' > /healthcheck && \
-	echo 'env -i SCRIPT_NAME=/health SCRIPT_FILENAME=/health REQUEST_METHOD=GET cgi-fcgi -bind -connect 127.0.0.1:9000 || exit 1' >> /healthcheck && \
-	chmod +x /healthcheck
-
 EXPOSE 8620
 
-# ENTRYPOINT ["composer", "dev"]
+ENTRYPOINT ["composer", "start"]
