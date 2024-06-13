@@ -5,7 +5,7 @@ LABEL maintainer="Varimax Developer" version="2.0" license="MIT" app.name="varim
 ENV TIMEZONE=Asia/Shanghai
 
 RUN set -ex && apk update \
-    && apk add -U tzdata openssl-dev brotli-dev $PHPIZE_DEPS \
+    && apk add -U tzdata openssl-dev brotli-dev libstdc++ $PHPIZE_DEPS \
 
     && docker-php-ext-install pdo pdo_mysql \
 
