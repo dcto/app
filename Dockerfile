@@ -6,6 +6,13 @@ ENV TIMEZONE=Asia/Shanghai
 
 RUN set -ex && apk update \
     && apk add -U tzdata openssl-dev brotli-dev $PHPIZE_DEPS \
+
+    && docker-php-ext-install pdo pdo_mysql \
+
+    && pecl update-channels \
+    && pecl install redis && docker-php-ext-enable redis \
+    && pecl install swoole && docker-php-ext-enable swoole \
+
     && echo "${TIMEZONE}" > /etc/timezone \
     && ln -sf /usr/share/zoneinfo/${TIMEZONE}  /etc/localtime \
     && cd /usr/local/etc/php \
@@ -16,12 +23,6 @@ RUN set -ex && apk update \
         echo "memory_limit=2G"; \
         echo "date.timezone=${TIMEZONE}"; \
     } | tee conf.d/99_overrides.ini \
-
-    && docker-php-ext-install pdo pdo_mysql \
-
-    && pecl update-channels \
-    && pecl install redis && docker-php-ext-enable redis \
-    && pecl install swoole && docker-php-ext-enable swoole \
 
     && apk del tzdata pcre-dev ${PHPIZE_DEPS} && rm -rf /tmp/* /var/cache/apk/* /usr/share/man 
 
