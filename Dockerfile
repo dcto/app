@@ -1,14 +1,11 @@
-FROM php:8.0-fpm-alpine3.16
+FROM php:8-zts-alpine
 
 LABEL maintainer="Varimax Developer" version="2.0" license="MIT" app.name="varimax"
 
-ARG timezone
+ENV TIMEZONE=Asia/Shanghai
 
-ENV TIMEZONE=${timezone:-"Asia/Shanghai"}
-
-RUN set -ex \
-    && apk update \
-    && apk add -U tzdata \
+RUN set -ex && apk update \
+    && apk add -U tzdata openssl-dev brotli-dev $PHPIZE_DEPS \
     && echo "${TIMEZONE}" > /etc/timezone \
     && ln -sf /usr/share/zoneinfo/${TIMEZONE}  /etc/localtime \
     && cd /usr/local/etc/php \
@@ -18,29 +15,29 @@ RUN set -ex \
         echo "post_max_size=128M"; \
         echo "memory_limit=2G"; \
         echo "date.timezone=${TIMEZONE}"; \
-    } | tee conf.d/99_overrides.ini 
+    } | tee conf.d/99_overrides.ini \
 
-RUN docker-php-ext-install pdo pdo_mysql 
-    # && pecl install -o -f redis && rm -rf /tmp/pear  \
-    # && docker-php-ext-enable redis 
+    && docker-php-ext-install pdo pdo_mysql \
 
-RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
-    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer  \
-    && php -r "unlink('composer-setup.php');" \
-    && php -m \
-    && php -v
+    && pecl update-channels \
+    && pecl install redis && docker-php-ext-enable redis \
+    && pecl install swoole && docker-php-ext-enable swoole \
 
-RUN rm -rf /var/cache/apk/* /tmp/* /usr/share/man \
-    && echo -e "\033[42;37m Build Completed :).\033[0m\n"
+    && apk del tzdata pcre-dev ${PHPIZE_DEPS} && rm -rf /tmp/* /var/cache/apk/* /usr/share/man 
 
 WORKDIR /opt/www
 
-COPY . /opt/www
+COPY . .
 
-RUN composer config repo.packagist composer https://mirrors.aliyun.com/composer/
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer  \
+    && php -r "unlink('composer-setup.php');" \
+    && composer config repo.packagist composer https://mirrors.aliyun.com/composer/ && composer install --no-dev -o \ 
+    && php -m \
+    && php -v \
+    && date \
+    && echo -e "Build Completed." 
 
-# RUN composer install --no-dev -o
-RUN echo '#!/bin/bash' > /healthcheck && \
 EXPOSE 8620
 
 ENTRYPOINT ["composer", "start"]
