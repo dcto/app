@@ -26,14 +26,15 @@ RUN set -ex && apk update \
 
     && apk del tzdata pcre-dev ${PHPIZE_DEPS} && rm -rf /tmp/* /var/cache/apk/* /usr/share/man 
 
-WORKDIR /opt/www
+WORKDIR /var/www
 
 COPY . .
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer  \
     && php -r "unlink('composer-setup.php');" \
-    && composer config repo.packagist composer https://mirrors.aliyun.com/composer/ && composer install --no-dev -o \ 
+    # && composer config repo.packagist composer https://mirrors.aliyun.com/composer/ && 
+    && composer install --no-cache --no-dev -o \ 
     && php -m \
     && php -v \
     && date \
