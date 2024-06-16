@@ -1,6 +1,7 @@
 {
     "name": "varimax/app",
     "type": "application",
+    "version": "3.1.0",
     "keywords": [
         "php",
         "varimax",
