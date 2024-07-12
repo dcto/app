@@ -5,6 +5,7 @@ Router::get('/favicon.ico', fn()=>response('', 201));
 //公共组
 Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () { 
     Router::any('/', 'Index@index'); 
+    Router::any('/auth', 'Access@auth'); 
     Router::any('/test')->call('Test@index');
     Router::any('/lang')->call('Lang@index');
     Router::any('/session')->call('Session@index');
