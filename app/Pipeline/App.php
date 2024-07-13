@@ -24,7 +24,7 @@ class App {
             return $r;
         }catch(\Throwable $e){
             error_log($e, 4);
-            return \Response::make(\VM\Exception\E::html($e), 500);
+            return $this->response(500, $e->getMessage(), []);
         }
     }
 
@@ -35,8 +35,8 @@ class App {
      * @param array $data
      * @return \VM\Http\Response
      */
-    protected function response(int $code = 200, string $message = '', $dataset = [])
+    protected function response(int $code = 200, string $message = '', $data = [])
     {
-        return response()->json(['code'=>$code, 'message' => $message, 'dataset'=>$dataset], $code);
+        return response()->json(['code'=>$code, 'data'=>$data, 'message' => $message], $code);
     }
 }   

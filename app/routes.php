@@ -17,11 +17,11 @@ Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controlle
     Router::get('/test/(shop:vip|user)' )->call('Test@shop' ); //only allow vip or user string
     Router::get('/test/(shop:vip|user)/(id:|\d+)' )->call('Test@shop' );
     //注册
-    Router::post('/signup' )->call('User@register' );
+    Router::post('/signup' )->call('Access@register' );
     //登录
-    Router::post('/signin' )->call('User@login' );
+    Router::post('/signin' )->call('Access@login' );
     //登出
-    Router::get('/logout' )->call('User@logout' );
+    Router::get('/logout' )->call('Access@logout' );
 
     //Restful CRUD
     //Router::restful('/user')->call( 'User@restful');
