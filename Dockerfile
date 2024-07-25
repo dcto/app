@@ -1,6 +1,6 @@
 FROM php:8-zts-alpine
 
-LABEL maintainer="Varimax Developer" version="2.0" license="MIT" app.name="varimax"
+LABEL maintainer="varimax" version="2.0" license="MIT" app.name="varimax"
 
 ENV TIMEZONE=Asia/Shanghai
 
@@ -33,7 +33,7 @@ COPY . .
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer  \
     && php -r "unlink('composer-setup.php');" \
-    # && composer config repo.packagist composer https://mirrors.aliyun.com/composer/ && 
+    && composer config repo.packagist composer https://mirrors.aliyun.com/composer/ && 
     && composer install --no-cache --no-dev -o \ 
     && php -m \
     && php -v \
