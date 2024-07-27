@@ -1,4 +1,4 @@
-FROM php:8-zts-alpine
+FROM --platform=linux/amd64 php:8-zts-alpine
 
 LABEL maintainer="varimax" version="2.0" license="MIT" app.name="varimax"
 
