@@ -108,7 +108,7 @@
                     'database'=>0,
                     'persistent'=>false,
                     'options'=>[
-                        \Redis::OPT_PREFIX=>'vm:',
+                        2=>'vm:',
                     ]
                 ]
             ],
