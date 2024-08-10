@@ -8,6 +8,8 @@ RUN set -ex && apk update \
     && apk add --no-cache tzdata \
     && echo "${TIMEZONE}" > /etc/timezone \
     && ln -sf /usr/share/zoneinfo/${TIMEZONE}  /etc/localtime \
+    && docker-php-ext-install pcntl \
+    && docker-php-ext-enable pcntl \
     && cd /usr/local/etc/php \
     && cp php.ini-production php.ini \
     && { \
