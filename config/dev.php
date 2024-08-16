@@ -67,7 +67,7 @@
             'database'  =>   env('DB_DATABASE', 'test'),    //数据库名称
             'username'  =>   env('DB_USERNAME', 'root'),        //连接帐号
             'password'  =>   env('DB_PASSWORD', 'root'),        //连接密码
-            'prefix'    =>   env('DB_PREFIX', 'vm_'),         //所有表前缀
+            'prefix'    =>   env('DB_PREFIX', ''),         //所有表前缀
             'charset'   =>   env('DB_CHARSET', 'utf8mb4'),     //字符集
             'collation' =>   env('DB_COLLATION', 'utf8mb4_unicode_ci'), //排序规则
         ],
