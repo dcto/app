@@ -16,15 +16,22 @@ class App {
     public function handle($request, \Closure $next, ...$guards)
     {
         //automatic handle response  array|string|throwable
+        //automatic handle response  array|string|throwable
         try{
+            
             $r = $next($request);
             if(!$r instanceof \VM\Http\Response){
                 $r = is_scalar($r) ? \Response::make($r) : \Response::json($r);
             }
             return $r;
+
         }catch(\Throwable $e){
+
             error_log($e, 4);
-            return $this->response(500, $e->getMessage(), []);
+            
+            if($request->accept('application/json')) return $this->response(500, $e->getMessage(), []);
+
+            return \Response::make(\VM\Exception\E::html($e), 500);
         }
     }
 
