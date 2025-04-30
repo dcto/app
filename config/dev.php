@@ -54,7 +54,6 @@
 'database'=>[
     'default'=>'mysql',
     'connections'=>[
-        //MYSQL类型
         'mysql'=>[
             #数据库类型( MySQL = mysql | SQL Server = sqlsrv | SQLite = sqlite | pgSql = pgsql)
             'driver'  =>  env('DB_DRIVER','mysql'),
@@ -70,6 +69,19 @@
             'prefix'    =>   env('DB_PREFIX', ''),         //所有表前缀
             'charset'   =>   env('DB_CHARSET', 'utf8mb4'),     //字符集
             'collation' =>   env('DB_COLLATION', 'utf8mb4_unicode_ci'), //排序规则
+        ],
+        'pgsql'=>[
+            #数据库类型( MySQL = mysql | SQL Server = sqlsrv | SQLite = sqlite | pgSql = pgsql)
+            'driver'  =>  env('DB_DRIVER','pgsql'),
+            'host'      =>   env('DB_HOST', '127.0.0.1'),   //连接地址
+            'port'      =>   env('DB_PORT', 5432),        //连接端口
+            'database'  =>   env('DB_DATABASE', 'postgres'),    //数据库名称
+            'username'  =>   env('DB_USERNAME', 'postgres'),        //连接帐号
+            'password'  =>   env('DB_PASSWORD', 'postgres'),        //连接密码
+            'prefix'    =>   env('DB_PREFIX', ''),         //所有表前缀
+            'charset'   =>   env('DB_CHARSET', 'utf8'),     //字符集
+            'schema' => 'public', // schema name
+            'sslmode' => 'prefer',  //
         ],
 
         'sqlite'=>[
