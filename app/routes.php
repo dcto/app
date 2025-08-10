@@ -1,24 +1,24 @@
 <?php
 
-Router::get('/favicon.ico', fn()=>response('', 201));
+// Router::get('/favicon.ico', fn()=>response('', 204));
 
 //公共组
-Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () { 
-    Router::any('/', 'Index@index'); 
-    Router::any('/auth', 'Access@auth'); 
-    Router::any('/test')->call('Test@index');
-    Router::any('/lang')->call('Lang@index');
-    Router::any('/session')->call('Session@index');
-    Router::any('/cookie')->call('Cookie@index');
-    Router::any('/file' )->call('Test@files');
-    Router::any('/twig' )->call('Test@twig');
-    Router::any('/ws')->call('WebSocket@index');
-    Router::any('/test/(list:*)/(id:\d+)' )->id('test.list')->call('Test@test' );
+Router::group( ['id' => 'public', 'prefix' => '/', 'namespace' => 'App\Controller'], function () {     
+    Router::get('/', 'Index@index'); 
+    Router::get('/auth', 'Access@auth'); 
+    Router::get('/test')->call('Test@index');
+    Router::get('/lang')->call('Lang@index');
+    Router::get('/session')->call('Session@index');
+    Router::get('/cookie')->call('Cookie@index');
+    Router::get('/file' )->call('Test@files');
+    Router::get('/twig' )->call('Test@twig');
+    Router::get('/ws')->call('WebSocket@index');
     Router::get('/test/(shop:vip|user)' )->call('Test@shop' ); //only allow vip or user string
     Router::get('/test/(shop:vip|user)/(id:|\d+)' )->call('Test@shop' );
+    Router::post('/test/(list:*)' )->id('test.list')->call('Test@test' );
     //注册
     Router::post('/signup' )->call('Access@register' );
-    //登录
+    //登录 
     Router::post('/signin' )->call('Access@login' );
     //登出
     Router::get('/logout' )->call('Access@logout' );
@@ -42,16 +42,25 @@ Router::group( ['id' => 'permit', 'prefix' => '/', 'namespace' => 'App\Controlle
     
     Router::group(['id'=>'menu'], function(){
         /**
-         * 会员中心
+         * 会员
          * name: 组名称
          * prefix: 当以/开头表示覆盖前缀,否则继承
          * namespace: 当以\开头表示覆盖命名空间前缀,否则继承
          */
         Router::group(['id'=>'user', 'name'=>'user', 'prefix'=>'/user', 'namespace'=>'User', 'pipeline'=>'App\Pipeline\User'], function(){
-            Router::get('/list')->call('User@index');
-            Router::any('/create')->call('User@create');
-            Router::any('/update')->call('User@update');
-            Router::any('/delete')->call('User@delete');
+           
+            /*
+                Restful CRUD
+                Method     |  Path                |  Action  |
+                ------------------------------------------------
+                GET        |  /test               |  get     |
+                GET        |  /test/(:id)         |  get     |
+                POST       |  /test               |  post    |
+                PUT        |  /test/(:id)         |  put     |
+                PATCH      |  /test/(:id)         |  patch   |
+                DELETE     |  /test/(:id)         |  delete  |
+            */
+            Router::restful('/', 'User');
         });
         
         Router::group(['id'=>'admin', 'name'=>'管理员', 'prefix'=>'admin'], function(){
