@@ -98,7 +98,7 @@
 #缓存配置
 ##########################################
 'cache'=>[
-    'default' => 'files', //缓存引擎 可选null,apc,files,redis
+    'default' => 'memory', //缓存引擎 可选null,memory,files,redis
     'driver'=>[
             //APC缓存
             'apc'   =>  [
@@ -174,7 +174,8 @@
 #管道中间件
 ##########################################
 'pipeline'=>[
-    App\Pipeline\App::class // App Global Pipeline
+    App\Pipeline\Cors::class,  // CORS Pipeline
+    App\Pipeline\App::class // Global App Pipeline
 ],
 
 ##########################################

@@ -15,15 +15,9 @@ class Cors {
      */
     public function handle($request, \Closure $next, ...$guards)
     {
-        if ($request->method('OPTIONS')) {
-            return response('', 200, [
-                'Access-Control-Max-Age'=>'600',
-                'Access-Control-Allow-Origin'=>'*',
-                'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE, OPTIONS',
-                'Access-Control-Allow-Headers'=>'Accept, Application, Authorization, Content-Type, Origin, X-Requested-With',
-                'Access-Control-Allow-Credentials'=>'true'
-            ]);
-        }
-        return $next($request);
+        return $next($request)->header('Access-Control-Max-Age', '600')
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Authorization, Content-Type, Origin, X-Requested-With');
     }
 }   
