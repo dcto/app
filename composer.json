@@ -12,8 +12,9 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "varimax/server": "@dev",
+        "symfony/uid": "^7.3",
         "varimax/crontab": "@dev",
+        "varimax/server": "@dev",
         "varimax/varimax": "@dev"
     },
     "require-dev": {
